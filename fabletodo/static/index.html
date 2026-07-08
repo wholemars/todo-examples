@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>fabletodo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Schibsted+Grotesk:wght@400;500;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <p class="eyebrow">fabletodo</p>
+      <h1 class="today" id="today-date">…</h1>
+      <p class="tally mono" id="tally" aria-live="polite"></p>
+    </header>
+
+    <section class="sheet" aria-label="Tasks">
+      <form class="capture" id="capture-form">
+        <span class="capture-mark" aria-hidden="true">
+          <svg viewBox="0 0 22 22" width="22" height="22"><path class="ring" d="M11 2.6 C16 2.2 19.6 6 19.4 11 C19.2 16 16 19.6 11 19.4 C6 19.2 2.4 16 2.6 11 C2.8 6 6 3 11 2.6" fill="none"/></svg>
+        </span>
+        <input id="capture-input" type="text" autocomplete="off" spellcheck="false"
+               placeholder="Write a task, press Enter" aria-label="New task" maxlength="500">
+        <button type="button" class="icon-btn" id="capture-due-btn" title="Set a due date" aria-label="Set a due date">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13" rx="2.5" fill="none"/><path d="M2.5 8.5 h15 M6.5 2.5 v3 M13.5 2.5 v3" fill="none"/></svg>
+        </button>
+        <input type="date" id="capture-due" class="date-input" tabindex="-1" aria-hidden="true">
+        <span class="capture-chip mono" id="capture-chip" hidden>
+          <span id="capture-chip-text"></span>
+          <button type="button" id="capture-chip-clear" aria-label="Remove due date">×</button>
+        </span>
+        <kbd class="enter-hint" aria-hidden="true">↵</kbd>
+      </form>
+
+      <ul class="list" id="list"></ul>
+
+      <p class="empty mono" id="empty" hidden></p>
+
+      <footer class="sheet-foot">
+        <div class="filters" role="tablist" aria-label="Filter tasks">
+          <button role="tab" class="filter" data-filter="all">All</button>
+          <button role="tab" class="filter" data-filter="active">Open</button>
+          <button role="tab" class="filter" data-filter="done">Done</button>
+        </div>
+        <button class="clear-done mono" id="clear-done" hidden>Clear done</button>
+      </footer>
+    </section>
+
+    <p class="hints mono">
+      <kbd>/</kbd> new task &nbsp;·&nbsp; double-click to edit &nbsp;·&nbsp; drag to reorder
+    </p>
+  </main>
+
+  <div class="toast mono" id="toast" role="status" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
